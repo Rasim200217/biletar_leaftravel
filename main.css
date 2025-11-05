@@ -1,0 +1,170 @@
+ body {
+     background: #f8f9fa;
+     display: flex;
+     justify-content: center;
+     padding: 40px;
+     font-family: "Segoe UI", Roboto, Arial, sans-serif;
+ }
+
+ .a4 {
+     width: 210mm;
+     min-height: 297mm;
+     background: #fff;
+     box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+     border-radius: 8px;
+     padding: 25mm 20mm;
+     box-sizing: border-box;
+     position: relative;
+ }
+
+ header {
+     display: flex;
+     justify-content: space-between;
+     align-items: flex-start;
+     border-bottom: 1px solid #dadada;
+     padding-bottom: 10px;
+ }
+
+ .logo {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
+
+ .logo img {
+     width: 100%;
+     height: 55px;
+ }
+
+ .logo-text {
+     font-weight: 700;
+     font-size: 22px;
+     line-height: 1.1;
+ }
+
+ .header-right {
+     text-align: right;
+     color: #555;
+     font-size: 13px;
+ }
+
+ .block {
+     margin-top: 25px;
+     font-size: 14px;
+     line-height: 1.4;
+     display: flex;
+     justify-content: space-between;
+ }
+
+
+ .block strong {
+    font-weight: 400;
+     display: block;
+     color: #5B5B5B;
+ }
+
+ .col-2 {
+    width: 40%;
+ }
+
+ .text_date {
+    text-transform: uppercase;  
+    font-size: 22px;
+ }
+
+ table.flight {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 15px;
+     border-radius: 8px;
+     overflow: hidden;
+ }
+
+ .flight th {
+     background: #00633B;
+     color: #fff;
+     font-weight: 500;
+     padding: 8px 10px;
+     font-size: 13px;
+     text-align: left;
+ }
+
+ .flight td {
+     border: 1px solid #e0e0e0;
+     padding: 8px 10px;
+     font-size: 13px;
+     color: #333;
+     vertical-align: top;
+ }
+
+ .flight tr:nth-child(even) td {
+     background: #f9f9f9;
+ }
+
+ .flight td[contenteditable="true"]:focus {
+     outline: 2px solid #00633B33;
+     background: #e9f5ef;
+ }
+
+ .important {
+     margin-top: 25px;
+ }
+
+ .important h3 {
+     font-size: 15px;
+     color: #333;
+     text-transform: uppercase;
+     margin-bottom: 8px;
+ }
+
+ .important ul {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     font-size: 13px;
+ }
+
+ .important li {
+     margin-bottom: 6px;
+     display: flex;
+     align-items: center;
+     gap: 6px;
+ }
+
+ .important li::before {
+     content: "✔";
+     color: #00633B;
+     font-weight: 700;
+ }
+
+ .note {
+     margin-top: 10px;
+     font-size: 12px;
+     color: #555;
+     font-style: italic;
+ }
+
+ footer {
+     position: absolute;
+     bottom: 15mm;
+     left: 0;
+     right: 0;
+     text-align: center;
+     font-size: 12px;
+     color: #666;
+ }
+
+ button {
+     background: #00633B;
+     color: #fff;
+     border: none;
+     padding: 10px 20px;
+     border-radius: 8px;
+     cursor: pointer;
+     font-size: 15px;
+     margin-top: 20px;
+ }
+
+ button:hover {
+     background: #004d2e;
+ }

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Leaf Travel</title>
+</head>
+<body>
+<div>
+    <div id="preview" class="a4">
+        <header>
+            <div class="logo">
+                <img src="https://1.downloader.disk.yandex.ru/preview/7ceb091d5e912a62f0d75a94cf4d9abe2a10314b4e40a47114d707dccf41fade/inf/pg3AhI6jW71wdDWnA8F62gTO0gHCLCvtC-g4Aq3XTHdKpKmsaX7_gUDtbpYKHi6SgC55OPVhHOExeOaQ4Y1Igg%3D%3D?uid=418974076&filename=Logo%20dark.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=418974076&tknv=v3&size=1718x1270"
+                    alt="Leaf Travel Logo">
+            </div>
+            <div class="header-right">
+                <div>Маршрутная квитанция электронного билета</div>
+                <div>Дата печати билета: <span contenteditable="true">03.11.2025</span></div>
+            </div>
+        </header>
+
+        <div class="block">
+            <div class="col-1">
+             <div><strong>№ брони:</strong> <span id="number" contenteditable="true" class="text_date">120454</span></div>
+             <div><strong>Авиакомпания:</strong> <span contenteditable="true" class="text_date">UZAIWAIS</span></div>
+            </div>
+            
+            <div class="col-2">
+             <div><strong>Пассажир:</strong> <span contenteditable="true" class="text_date">RASIM AKHMEDSHIN</span></div>
+             <div><strong>Паспорт</strong> <span contenteditable="true" class="text_date">FA7212328</span> <br>
+                <span contenteditable="true" class="text_date">09.07.2030</span>
+            </div>
+           
+            </div>
+        </div>
+
+        <h2 style="color:#00633B;font-size:15px;margin-top:25px;margin-bottom:8px;">Информация о рейсе</h2>
+        <table class="flight">
+            <thead>
+                <tr>
+                    <th>Авиакомпания</th>
+                    <th>Отправление</th>
+                    <th>Прибытие</th>
+                    <th>Класс / Багаж</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td contenteditable="true"><b>HY-3223</b><br><small>Airbus A321neo</small></td>
+                    <td contenteditable="true">08:15 / <b>TAS</b><br>20.07.2025</td>
+                    <td contenteditable="true">11:25 / <b>AYT</b><br>20.07.2025</td>
+                    <td contenteditable="true"><b>Эконом</b><br>Багаж до 20 кг</td>
+                </tr>
+                <tr>
+                    <td contenteditable="true"><b>HY-3224</b><br><small>Airbus A321neo</small></td>
+                    <td contenteditable="true">12:25 / <b>AYT</b><br>27.07.2025</td>
+                    <td contenteditable="true">19:25 / <b>TAS</b><br>27.07.2025</td>
+                    <td contenteditable="true"><b>Эконом</b><br>Багаж до 20 кг</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="important">
+            <h3>ВАЖНАЯ ИНФОРМАЦИЯ!</h3>
+            <ul>
+                <li>Указано местное время прибытия / убытия</li>
+                <li>Регистрация на рейс открывается за 3 часа до вылета</li>
+                <li>Регистрация на рейс закрывается за 1 час до вылета</li>
+            </ul>
+            <div class="note">
+                *Авиабилеты нельзя будет отменить или перебронировать после оплаты.<br>
+                Отмену или перебронирование можно осуществить без штрафа в течение 1-их суток после бронирования.
+            </div>
+        </div>
+
+        <footer>© Leaf Travel Uzbekistan | leaf_travel@mail.ru | t.me/leaf_traveltour</footer>
+    </div>
+
+    <button id="download">Скачать PDF</button>
+
+
+<!-- html2canvas + jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    
+   document.getElementById("download").addEventListener("click", async () => {
+        const { jsPDF } = window.jspdf;
+        const preview = document.getElementById("preview");
+        const num = document.getElementById('number').innerText
+
+        
+        document.activeElement.blur();
+        await new Promise(r => setTimeout(r, 300));
+
+        try {
+            const canvas = await html2canvas(preview, {
+                scale: 2,
+                backgroundColor: "#FFFFFF",
+                useCORS: true,
+                allowTaint: false,
+                imageTimeout: 0,
+                logging: false
+            });
+
+            const img = canvas.toDataURL("image/png");
+            const pdf = new jsPDF("p", "mm", "a4");
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = (canvas.height * pageWidth) / canvas.width;
+
+            pdf.addImage(img, "PNG", 0, 0, pageWidth, pageHeight);
+            pdf.save(`LeafTravel_Bilet_${num}.pdf`);
+        } catch (err) {
+            alert("Ошибка при создании PDF: " + err.message +
+                "\n\nПопробуй удалить логотип или заменить его на локальный файл.");
+            
+        }
+    });
+    console.error(num);
+</script>
+</body>
+</html>
